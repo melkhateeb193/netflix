@@ -95,7 +95,7 @@ function NavBar() {
                 <NavLink className="nav__link" as={Link} to="/">
                   My List
                 </NavLink>
-                <NavLink className="nav__link" as={Link} to="/">
+                <NavLink className="nav__link" as={Link} to="/browse">
                   Browse by Languages
                 </NavLink>
               </Nav>

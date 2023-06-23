@@ -24,12 +24,11 @@ function ListItems({ index, movie }) {
     };
 
     fetchMovieData();
-  }, [movie.id]);
-
+  }, [movie.id]); 
   return (
     <div
       className="ListItemsHandle"
-      style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
+      style={{ left: isHovered && index * 225 - 50 + index * 2.5  }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
