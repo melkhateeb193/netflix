@@ -273,7 +273,7 @@ function NavBar() {
                     </ul>
                     <ul className="profile__menu--listEnd">
                       <li className="profile__menu--listItem">
-                        <a className="profile__menu--btn" href="/index.html">
+                        <a className="profile__menu--btn" href="/mainpage">
                           Sign out of Netflix
                         </a>
                       </li>

@@ -1,7 +1,7 @@
  
 import React, { useState } from "react";
 import "./signUp.css";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export default function SignUp() {
   const [user, setUser] = useState([
     {
@@ -19,12 +19,12 @@ export default function SignUp() {
       passError: "",
     },
   ]);
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
   const handleSubmit = (evt) => {
     evt.preventDefault();
    
 
-    // navigate('/home');
+    navigate('/Home');
   };
   const LogInNav =()=>{
 // navigate('/login');

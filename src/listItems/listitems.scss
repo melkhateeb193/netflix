@@ -1,4 +1,4 @@
-.ListItems {
+.ListItemsHandle {
     width: 225px;
     height: 120px;
     background-color: var(--main-color);
@@ -6,7 +6,7 @@
     overflow: hidden;
     cursor: pointer;  
     color: white;
-    img {
+    .sliderImg {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -20,7 +20,7 @@
     -webkit-box-shadow: -1px 2px 15px 5px rgba(255,255,255,0.3); 
     box-shadow: -1px 2px 15px 5px rgba(255,255,255,0.3);
     border-radius: 5px;
-    img {
+    .sliderImg {
         height: 140px;
     }
     .itemInfo{
@@ -38,7 +38,7 @@
             margin-right: 10px;
         }
     }
-    .itemsInfoText{
+    .itemsInfoTextLT{
         display: flex;
         align-items: center;
         margin-bottom: 10px;

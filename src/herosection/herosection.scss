@@ -12,17 +12,17 @@
       display: flex;
       align-items: center;
   
-      select {
-        cursor: pointer;
-        background-color: var(--main-color);
+      .selectHero {
+        background-color:#0b0b0b ;
         border: 1px solid white;
         color: white;
         margin-left: 20px;
         padding: 5px;
+        cursor: pointer;
       }
     }
   
-    img {
+    .heroSectionImg {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -37,7 +37,7 @@
       display: flex;
       flex-direction: column;
   
-      img {
+      .heroSectionImg {
         width: 400px;
       }
   
@@ -45,7 +45,7 @@
         margin: 20px 0px;
       }
   
-      .buttons {
+      .buttonsHero {
         display: flex;
   
         button {
@@ -60,7 +60,7 @@
           margin-right: 10px;
           cursor: pointer;
   
-          &.play {
+          &.play{
             background-color: white;
             color: var(--main-color);
           }

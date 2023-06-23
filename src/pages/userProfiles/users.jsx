@@ -8,9 +8,9 @@ function Userprofile() {
         <div className="container row p-5 w-100 ">
           <div className="col-md text-center ">
             <div className="box">
-              <a href="/Home/index.html">
+              <a href="/Home">
                 {" "}
-                <img src="images/smile1.png" alt="" />
+                <img className='usersImg' src="images/smile1.png" alt="" />
               </a>
             </div>
             <p>
@@ -19,35 +19,35 @@ function Userprofile() {
           </div>
           <div className="col-md text-center">
             <div className="box">
-              <a href="/Home/index.html">
+              <a href="/Home">
                 {" "}
-                <img src="images/smile2.png" alt="" />{" "}
+                <img className='usersImg' src="images/smile2.png" alt="" />{" "}
               </a>
             </div>
             <p>
-              <a href="/Home/index.html">Abdelrahman alaa</a>
+              <a href="/Home">Abdelrahman alaa</a>
             </p>
           </div>
           <div className="col-md text-center">
             <div className="box">
-              <a href="/Home/index.html">
+              <a href="/Home">
                 {" "}
-                <img src="images/smile3.png" alt="" />{" "}
+                <img className='usersImg' src="images/smile3.png" alt="" />{" "}
               </a>
             </div>
             <p>
-              <a href="/Home/index.html">karem awad</a>
+              <a href="/Home">karem awad</a>
             </p>
           </div>
           <div className="col-md text-center">
             <div className="box">
-              <a href="/Home/index.html">
+              <a href="/Home">
                 {" "}
-                <img src="images/smile4.png" alt="" />{" "}
+                <img className='usersImg' src="images/smile4.png" alt="" />{" "}
               </a>
             </div>
             <p>
-              <a href="/Home/index.html">Mostafa Ali</a>
+              <a href="/Home">Mostafa Ali</a>
             </p>
           </div>
           <div className="col-md text-center">

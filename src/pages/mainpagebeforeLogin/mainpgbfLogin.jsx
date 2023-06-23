@@ -3,7 +3,7 @@ import './mainpgbfLogin.css'
 import Dropdown from 'react-bootstrap/Dropdown';
 import { FaGlobe } from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Accordion from 'react-bootstrap/Accordion';
 
 function MainpgbfLogin() {
@@ -39,7 +39,7 @@ function MainpgbfLogin() {
               </Dropdown>
               <button className="btn ms-3" type="submit">
                 {" "}
-                {/* <Link to="/login">sign In</Link>  */}
+                <Link to="/login">sign In</Link> 
               </button>
             </div>
           </div>
@@ -64,7 +64,7 @@ function MainpgbfLogin() {
               />
               <button className="d-flex justify-content-center align-items-center btn pe-4 ps-3">
               
-                {/* <Link to="/login">Get Started</Link>  */}
+                <Link to="/login">Get Started</Link> 
                 <FontAwesomeIcon icon="fa-solid fa-chevron-right text-white" />
               </button>
             </div>
@@ -225,7 +225,7 @@ function MainpgbfLogin() {
               />
               <button className="d-flex justify-content-center align-items-center btn pe-4 ps-3">
                 {" "}
-                {/* <Link to="/login">Get Started</Link>  */}
+                <Link to="/login">Get Started</Link> 
                 <i className="fa-solid fa-chevron-right ms-1 text-white" />
               </button>
             </div>

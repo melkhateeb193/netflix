@@ -46,13 +46,13 @@ export default function List() {
   return (
     <div className="list">
       <span className="listTitle">Continue to watch</span>
-      <div className="wrapper">
+      <div className="wrapperList">
         <ArrowBackIos
           className="sliderArrow left"
           onClick={() => handleClick("left")}
           style={{ display: !isMoved && "none" }}
         />
-        <div className="containerItem" ref={listRef}>
+        <div className="containerItemlist" ref={listRef}>
           {movies.map((movie, index) => (
             <ListItems key={index} index={index} movie={movie} />
           ))}

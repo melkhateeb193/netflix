@@ -28,7 +28,7 @@ function ListItems({ index, movie }) {
 
   return (
     <div
-      className="ListItems"
+      className="ListItemsHandle"
       style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -48,7 +48,7 @@ function ListItems({ index, movie }) {
           <ThumbDownAltOutlined className="icon" />
         </div>
         {movieData && (
-          <div className="itemsInfoText">
+          <div className="itemsInfoTextLT">
             <span>{movieData.runtime} mins</span>
             <span className="Age">{movieData.adult ? "+18" : "+16"}</span>
             <span>{movieData.release_date.substring(0, 4)}</span>

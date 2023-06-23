@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import "./login.css";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Dropdown from 'react-bootstrap/Dropdown';
 export default function Login() {
   const [user, setUser] = useState([
@@ -16,12 +16,12 @@ export default function Login() {
       passError: "",
     },
   ]);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const handleSubmit = (evt) => {
     evt.preventDefault();
    
 
-    // navigate('/home');
+    navigate('/userprofile');
   };
   const handleChange = (ev) => {
     if (ev.target.name === "email") {
