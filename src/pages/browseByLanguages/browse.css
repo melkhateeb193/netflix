@@ -38,10 +38,10 @@
  .immg2{
     width: 20%;
  }
-.immg:hover{ 
+/* .immg:hover{ 
     transform: scale(1.4,1.4 );
  
-} 
+}  */
  @media screen and (min-width : 901px) and (max-width : 1400px) {
 .immg2{
     width: 33.33% !important;

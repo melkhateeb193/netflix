@@ -7,13 +7,12 @@ import Footer from '../../footer/footer'
 
 function Home() {
     return (
-        <div className="Home" >
+        <div className="Home " >
           <NavBar/>
           <Herosecton/>
           <List/>
           <List/>
-          <List/>
-          <List/>
+          <List/> 
           <Footer/>
       </div>
     )

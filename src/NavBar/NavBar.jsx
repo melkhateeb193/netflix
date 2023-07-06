@@ -5,7 +5,8 @@ import Navbar from "react-bootstrap/Navbar";
 import NavLink from "react-bootstrap/NavLink";
 import Form from "react-bootstrap/Form";
 import "./NavBar.scss";
-import { Link } from "@mui/material";
+// import { Link } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -79,25 +80,25 @@ function NavBar() {
               id="mainNetflix__navbar--Toggle"
               className="navbar-collapse block"
             >
-              <Nav className="me-auto  mb-2 mb-lg-0">
-                <NavLink className="nav__link" as={Link} to="/">
+              <Nav className="me-auto  mb- mb-lg-0">
+                <Link className="nav__link"  to="/home">
                   Home
-                </NavLink>
-                <NavLink className="nav__link" as={Link} to="/">
+                </Link>
+                <Link className="nav__link" as={Link} to="/tvShow">
                   TV Shows
-                </NavLink>
-                <NavLink className="nav__link" as={Link} to="/">
+                </Link>
+                <Link className="nav__link" as={Link} to="/Movies">
                   Movies
-                </NavLink>
-                <NavLink className="nav__link" as={Link} to="/">
+                </Link>
+                <Link className="nav__link" as={Link} to="/Newpop">
                   New & Popular
-                </NavLink>
-                <NavLink className="nav__link" as={Link} to="/">
+                </Link>
+                <Link className="nav__link" as={Link} to="/mylist">
                   My List
-                </NavLink>
-                <NavLink className="nav__link" as={Link} to="/">
+                </Link>
+                <Link className="nav__link"  to="/browse">
                   Browse by Languages
-                </NavLink>
+                </Link>
               </Nav>
 
               <Nav className="d-flex hide">
