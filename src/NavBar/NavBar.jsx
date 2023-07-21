@@ -5,15 +5,29 @@ import Navbar from "react-bootstrap/Navbar";
 import NavLink from "react-bootstrap/NavLink";
 import Form from "react-bootstrap/Form";
 import "./NavBar.scss";
+import {  signOut } from "firebase/auth";
+
 // import { Link } from "@mui/material";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from "../AxiosConfig/fireBase";
+import { useDispatch } from "react-redux";
+import ChangeRouting from "../store/Action/auth";
 
 function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const inputRef = useRef(null);
-
+  const navigate = useNavigate();
+  const dispatch =useDispatch();
+ 
+  const handleLogout = () => {               
+      signOut(auth).then(() => { 
+        dispatch(ChangeRouting(false));
+          navigate("/");
+          console.log("Signed out successfully")
+      }).catch((error) => { 
+      });}
   useEffect(() => {
     const handleScroll = () => {
       if (window.pageYOffset > 0) {
@@ -55,7 +69,7 @@ function NavBar() {
     <>
       <div className={isScrolled ? "sticky scrolled" : "sticky"}>
         <Navbar
-          className="navbar justify-content-around "
+          className="navbar justify-content-around"
           expand="lg"
           id="navbar"
         >
@@ -274,7 +288,7 @@ function NavBar() {
                     </ul>
                     <ul className="profile__menu--listEnd">
                       <li className="profile__menu--listItem">
-                        <a className="profile__menu--btn" href="/mainpage">
+                        <a className="profile__menu--btn" href="/" as={Link} onClick={handleLogout}>
                           Sign out of Netflix
                         </a>
                       </li>

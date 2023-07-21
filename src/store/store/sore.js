@@ -1,12 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import Add_Remove_List_Reducers from "../Reducer/Combain";
+import {  applyMiddleware, createStore } from "@reduxjs/toolkit"; 
 import thunk from "redux-thunk";
+import MainReducers from "../Reducer/Combain";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-const store = configureStore({
-  reducer: {
-    myList: Add_Remove_List_Reducers,
-  },
-  middleware: [thunk],
-});
+const store =  createStore(MainReducers,composeWithDevTools(applyMiddleware(thunk)))
 
-export default store;
+export default store; 

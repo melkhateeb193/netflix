@@ -2,7 +2,12 @@
 import React, { useState } from "react";
 import "./signUp.css";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../../AxiosConfig/fireBase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useDispatch } from "react-redux"; 
+import ChangeRouting from "../../store/Action/auth";
 export default function SignUp() {
+  const dispatch =useDispatch();
   const [user, setUser] = useState([
     {
         name:"",
@@ -20,9 +25,21 @@ export default function SignUp() {
     },
   ]);
   const navigate = useNavigate();
-  const handleSubmit = (evt) => {
+  const handleSubmit = async(evt) => {
     evt.preventDefault();
-   
+    await createUserWithEmailAndPassword(auth,user.email,user.password)
+        .then((userCredential) => {
+         dispatch(ChangeRouting(true))
+            const user = userCredential.user;
+            console.log(user);
+            navigate("/home");
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+            // ..
+        });
 
     navigate('/Home');
   };
@@ -52,8 +69,8 @@ export default function SignUp() {
             ? "Enter Password "
             : ev.target.value.length <= 8
             ? "Password must be at least 8"
-            : !validatePassword(ev.target.value)
-            ? "Please enter a valid password"
+            // : !validatePassword(ev.target.value)
+            // ? "Please enter a valid password"
             : "",
       });
     }

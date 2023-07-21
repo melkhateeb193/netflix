@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import "../../list/list.scss";  
+import "./browse.css";  
 import ListItems from "../../listItems/listitems";
 import axiosInstanceNetflix from "../../AxiosConfig/instanceAxios";
 import NavBar from "../../NavBar/NavBar";
@@ -19,6 +19,7 @@ export default function BrowsePage() {
         page: currentPage,
       },
     }).then((res) => {  
+      // console.log(res.data.results);
       setMovies(res.data.results);
     })
     .catch((err) => {
@@ -29,10 +30,25 @@ export default function BrowsePage() {
  
   return (
     <>
+   
     <NavBar></NavBar>
-      <Browse></Browse>
-      <div className='list'>
+    <Browse></Browse>
+    <div className='container-fluid ps-5'>
                 <div className='list-body px-5 mt-4'> 
+                    <Row xs={5} md={5} className="main-design g-2  pt-4">
+                        {movies.map((movie) => (
+                            <Col key={movie.id} className='  pb-5'>
+                                <Card className='card-design '>
+                                    <Card.Img className='card-img ' variant="top" src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}></Card.Img>
+                                    
+                                </Card>
+                            </Col>
+                        ))}
+                    </Row>
+                </div>
+            </div>
+      {/* <div className='list pb-5'>
+                <div className='list-body px-5 mt-4 pe-5'> 
                     <Row xs={6} md={6} className="main-design g-2  pt-4">
                         {movies.map((movie ,index) => (
                             <Col key={movie.id}>
@@ -45,7 +61,7 @@ export default function BrowsePage() {
                         ))}
                     </Row>
                 </div>
-            </div>
+            </div> */}
       <Footer></Footer>
     </>
    

@@ -1,85 +1,84 @@
 import React from "react";
 import "./browse.css";
- 
+import Dropdown from 'react-bootstrap/Dropdown'; 
+
 export default function Browse() {
-  return (
-    <>
-    <div className="immg3 contianer-fluid m-4 ps-5 pe-5 pt-0 row ">
-    <div className="col-md-3 immg4">
-        <h3>Browse By Language</h3>
-    </div>
-    <div className="col-md-6 m-0 immg4">
-        <div className="row">
-            <div className="col-md-4 edit pt-2">
-                <p>Select Your Pereferences</p>
-            </div>
-            <div className="col-md-4 edit m-0">
-                <div className="dropdown ">
-                    <a className="btn btn11 btn-sm dropdown-toggle" href="-" role="button"   data-bs-toggle="dropdown"   aria-expanded="false">
-                       Languages
-                    </a>
-                  
-                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a className="dropdown-item" href="./browseByLanguage.html">Original Language</a></li>
-                        <li><a className="dropdown-item" href="./browsebbbols.html">Dabbing</a></li>
-                        <li><a className="dropdown-item" href="./subtitle.html">Subtitles</a></li>
-                      </ul>
-                  </div>
-            </div>
-             
-            <div className="col-md-4 edit m-0">
-                <div className="dropdown">
-                    <a className="btn btn11 btn-sm dropdown-toggle" href="-" role="button"   data-bs-toggle="dropdown"   aria-expanded="false">
-                      English
-                    </a>
-                    <ul className="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuLink">
-                      <li><a className="dropdown-item" href="./browseByLanguage.html">English</a></li>
-                      <li><a className="dropdown-item" href="./browseArabic.html">Arabic</a></li>
-                      <li><a className="dropdown-item" href="-">Fernch</a></li>
-                      <li><a className="dropdown-item" href="-">German</a></li>
-                      <li><a className="dropdown-item" href="-">Spanish</a></li>
-                      <li><a className="dropdown-item" href="-">English</a></li>
-                      <li><a className="dropdown-item" href="-">Arabic</a></li>
-                      <li><a className="dropdown-item" href="-">Fernch</a></li>
-                      <li><a className="dropdown-item" href="-">German</a></li>
-                      <li><a className="dropdown-item" href="-">Spanish</a></li>
-                      <li><a className="dropdown-item" href="-">English</a></li>
-                      <li><a className="dropdown-item" href="-">Arabic</a></li>
-                      <li><a className="dropdown-item" href="-">Fernch</a></li>
-                      <li><a className="dropdown-item" href="-">German</a></li>
-                      <li><a className="dropdown-item" href="-">Spanish</a></li>
-                      <li><a className="dropdown-item" href="-">English</a></li>
-                      <li><a className="dropdown-item" href="-">Arabic</a></li>
-                      <li><a className="dropdown-item" href="-">Fernch</a></li>
-                      <li><a className="dropdown-item" href="-">German</a></li>
-                      <li><a className="dropdown-item" href="-">Spanish</a></li>
-                    </ul>
+    return (
+        <>
+
+            <div className="containeer contianer-fluid m-4 p-5 row ">
+
+                <div className="col-md-3 ps-4 colors">
+                    <h4>Browse By Language</h4>
                 </div>
+                <div className="col-md-6 m-0">
+                    <div className="row">
+                        <div className="col-md-4 ">
+                            <p className=" pt-2 colors">Select Your Pereferences</p>
+                        </div>
+                        <div className="col-md-4 colors m-0 p-0 pt-2">
+                            <Dropdown    >
+                                <Dropdown.Toggle className="btnEdit" as={"button"}id="dropdown-button-dark-example1">
+                                Original Language
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu as={"button"} className="btnEdit2" variant="dark" >
+                                <Dropdown.Item eventKey="1">
+                                Original Language
+                                    </Dropdown.Item>
+                                    <Dropdown.Item eventKey="2">Dabbing</Dropdown.Item>
+                                    <Dropdown.Item eventKey="3">Subtitles</Dropdown.Item> 
+                                </Dropdown.Menu>
+                            </Dropdown>
+                   
+                        </div>
+
+                        <div className="col-md-4 colors m-0 ps-2 pt-2">
+                        <Dropdown >
+                                <Dropdown.Toggle className="btnEdit" as={"button"}id="dropdown-button-dark-example1">
+                                English
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu as={"button"} className="btnEdit2" variant="dark" >
+                                <Dropdown.Item eventKey="1">
+                                English
+                                    </Dropdown.Item>
+                                    <Dropdown.Item eventKey="2">Arabic</Dropdown.Item>
+                                    <Dropdown.Item eventKey="3">Fernch</Dropdown.Item> 
+                                    <Dropdown.Item eventKey="4">German</Dropdown.Item> 
+                                    <Dropdown.Item eventKey="5">Spanish</Dropdown.Item> 
+                                    <Dropdown.Item eventKey="6">Arabic</Dropdown.Item> 
+                                    <Dropdown.Item eventKey="7">Fernch</Dropdown.Item> 
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        
+                        </div>
+                    </div>
+                </div>
+
+                <div className="col-md-3">
+
+                    <div className="row">
+                        <div className="col-md-3">
+                            <p className="pt-2 colors">Sort By</p>
+                        </div>
+                        <div className="col-md-8 ps-3 colors  pt-2">
+                        <Dropdown className="btnEdit2">
+                                <Dropdown.Toggle className="btnEdit" as={"button"}id="dropdown-button-dark-example1">
+                                Suggestions
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu as={"button"} className="btnEdit2" variant="dark" >
+                                <Dropdown.Item eventKey="1">
+                                Suggestions For you
+                                    </Dropdown.Item>
+                                    <Dropdown.Item eventKey="2">Year Released</Dropdown.Item>
+                                    <Dropdown.Item eventKey="3">A-Z</Dropdown.Item> 
+                                    <Dropdown.Item eventKey="4">Z-A</Dropdown.Item> 
+                                </Dropdown.Menu>
+                            </Dropdown>
+                           
+                        </div>
+                    </div>
+                </div>  
             </div>
-            </div>
-        </div>
-   
-    <div className="col-md-3 immg4">
-        <div className="row">
-            <div className="col-md-3 edit pt-2">
-                <p>Sort By</p>
-            </div>
-            <div className="col-md-8 edit">
-                <div className="dropdown ">
-                    <a className="btn btn11 btn-sm dropdown-toggle" href="-" role="button"   data-bs-toggle="dropdown"   aria-expanded="false">
-                      Suggestions 
-                    </a>
-                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a className="dropdown-item" href="-"> Suggestions For you</a></li>
-                        <li><a className="dropdown-item" href="-">Year Released</a></li>
-                        <li><a className="dropdown-item" href="-">A-Z</a></li>
-                        <li><a className="dropdown-item" href="-">Z-A</a></li>
-                      </ul>
-                  </div>
-            </div>
-            </div>
-        </div>
-    </div>
-    </>
-  );
+        </>
+    );
 }

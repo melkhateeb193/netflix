@@ -7,14 +7,13 @@ import {
 } from "@mui/icons-material";
 import "./listitems.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { addToList } from "../store/Action/AddToList";
+import { addToList } from "../store/Action/AddToList"; 
 
 function ListItems({ index, movie }) {
   const [isHovered, setIsHovered] = useState(false);
   const [movieData, setMovieData] = useState(null);
-  const favorites = useSelector((state) => state.favorites);
-  const dispatch = useDispatch();
-
+  const favorites = useSelector((state) => state.moviesList);
+  const dispatch = useDispatch(); 
   useEffect(() => {
     const fetchMovieData = async () => {
       try {
@@ -38,7 +37,7 @@ function ListItems({ index, movie }) {
   const handleAddToList = (movie) => {
     console.log("Add to list:", movie.id);
 
-    const isMovieInFavorites = favorites.moviesList.some(
+    const isMovieInFavorites = favorites.some(
       (favMovie) => favMovie.id === movie.id
     );
 
@@ -49,6 +48,7 @@ function ListItems({ index, movie }) {
       console.log("Movie added to favorites list");
     }
   };
+
 
   return (
     <div className="test">
@@ -68,7 +68,7 @@ function ListItems({ index, movie }) {
         <div className="itemInfo">
           <div className="icons">
             <PlayArrow className="icon" />
-            <Add className="icon" onClick={() => handleAddToList(movie)} />
+            <Add className="icon" onClick={() => handleAddToList(movie)}/>
             <ThumbUpAltOutlined className="icon" />
             <ThumbDownAltOutlined className="icon" />
           </div>

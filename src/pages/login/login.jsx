@@ -3,7 +3,14 @@ import React, { useState } from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import Dropdown from 'react-bootstrap/Dropdown';
-export default function Login() {
+import { auth } from "../../AxiosConfig/fireBase";
+import {  signInWithEmailAndPassword   } from 'firebase/auth';
+import { useDispatch, useSelector } from "react-redux";  
+import ChangeRouting from "../../store/Action/auth";
+
+export default function Login() { 
+  const navigate = useNavigate();
+  const dispatch =useDispatch(); 
   const [user, setUser] = useState([
     {
       email: "",
@@ -16,13 +23,22 @@ export default function Login() {
       passError: "",
     },
   ]);
-  const navigate = useNavigate();
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth,user.email, user.password)
+    .then((userCredential) => { 
+        const user1 = userCredential.user;
+        dispatch(ChangeRouting(true));
+        navigate("/userprofile")
+        console.log(route);
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage)
+    });
    
-
-    navigate('/userprofile');
-  };
+};
   const handleChange = (ev) => {
     if (ev.target.name === "email") {
       setUser({ ...user, email: ev.target.value });
@@ -46,8 +62,8 @@ export default function Login() {
             ? "Enter Password "
             : ev.target.value.length <= 8
             ? "Password must be at least 8"
-            : !validatePassword(ev.target.value)
-            ? "Please enter a valid password"
+            // : !validatePassword(ev.target.value)
+            // ? "Please enter a valid password"
             : "",
       });
     }
