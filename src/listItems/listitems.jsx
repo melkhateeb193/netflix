@@ -7,49 +7,29 @@ import {
 } from "@mui/icons-material";
 import "./listitems.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { addToList } from "../store/Action/AddToList"; 
+import { addToList } from "../store/Action/AddToList";  
 
 function ListItems({ index, movie }) {
-  const [isHovered, setIsHovered] = useState(false);
-  const [movieData, setMovieData] = useState(null);
+  const [isHovered, setIsHovered] = useState(false); 
   const favorites = useSelector((state) => state.moviesList);
   const dispatch = useDispatch(); 
-  useEffect(() => {
-    const fetchMovieData = async () => {
-      try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${movie.id}?api_key=7f853d464ac954ff376525370120f3bd`
-        );
-        if (response.ok) {
-          const data = await response.json();
-          setMovieData(data);
-        } else {
-          console.log("Error:", response.status);
-        }
-      } catch (error) {
-        console.log("Error:", error);
-      }
-    };
-
-    fetchMovieData();
-  }, [movie.id]);
-
+  
   const handleAddToList = (movie) => {
-    console.log("Add to list:", movie.id);
+    // console.log("Add to list:", movie.id);
 
     const isMovieInFavorites = favorites.some(
-      (favMovie) => favMovie.id === movie.id
+      (favMovie) => favMovie.id === index
     );
 
-    if (isMovieInFavorites) {
+    if (isMovieInFavorites) { 
       console.log("Movie already in favorites list");
     } else {
       dispatch(addToList(movie));
       console.log("Movie added to favorites list");
     }
   };
-
-
+   
+  
   return (
     <div className="test">
       <div
@@ -58,33 +38,36 @@ function ListItems({ index, movie }) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {movieData && (
+         
           <img
             className="sliderImg"
-            src={`https://image.tmdb.org/t/p/w500${movieData.backdrop_path}`}
+            src={`${movie.Link ? movie.Link :movie.link}`}
             alt=""
           />
-        )}
+        
         <div className="itemInfo">
           <div className="icons">
             <PlayArrow className="icon" />
             <Add className="icon" onClick={() => handleAddToList(movie)}/>
-            <ThumbUpAltOutlined className="icon" />
-            <ThumbDownAltOutlined className="icon" />
+            <ThumbUpAltOutlined className="icon" onClick={() => handleAddToList(movie)} />
+            <ThumbDownAltOutlined className="icon"  />
           </div>
-          {movieData && (
-            <div className="itemsInfoTextLT">
-              <span>{movieData.runtime} mins</span>
-              <span className="Age">{movieData.adult ? "+18" : "+16"}</span>
-              <span>{movieData.release_date.substring(0, 4)}</span>
+          
+            <div className="itemsInfoTextLT"> 
+              <span className="Age">{movie.type ? movie.type :movie.Type}</span>
+              <span>{movie.Name ? movie.Name :movie.name}</span>
             </div>
-          )}
-          {movieData && <div className="desc">{movieData.overview}</div>}
-          {movieData && (
+           
+            <div className="desc"><p>{ movie.description ?movie.description :movie.Description}</p></div>
+          
+         
             <div className="genre">
-              {movieData.genres.map((genre) => genre.name).join(", ")}
+            
+                  
+              {/*        { movie.Genre? movie.Genres.map((genre) => genre).join(", ") :movie.Genre.map((genre) => genre).join(", ")}  */}
+
             </div>
-          )}
+          
         </div>
       </div>
     </div>

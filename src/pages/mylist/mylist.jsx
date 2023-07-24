@@ -2,39 +2,69 @@ import React from "react";
 import NavBar from "../../NavBar/NavBar";
 import Footer from "../../footer/footer";
 import { useSelector } from "react-redux";
-
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { useRef, useState } from "react";
+import "./../../list/list.scss";
+import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";  
+import ListItems from "../../listItems/listitems";
 function MyList() {
     const favorite = useSelector((state) => state.moviesList);
+    const [isMoved, setIsMoved] = useState(false);
+    const [slideNumber, setSlideNumber] = useState(0);
+    const [movies] = useState([]);
+    const [currentPage, setCurrentPage] = useState();
+    const listRef = useRef();
 
 
+    const handleClick = (direction) => {
+        setIsMoved(true);
+        let distance = listRef.current.getBoundingClientRect().x - 50;
+        if (direction === "left" && slideNumber >= 0) {
+          setSlideNumber(slideNumber - 1);
+          if (slideNumber===0){
+            if (currentPage !== 0) {
+              setCurrentPage(currentPage - 1);
+            }
+            else{
+              setCurrentPage(20);
+            }
+          }
+          listRef.current.style.transform = `translateX(${230 + distance}px)`;
+          
+        }
+        if (direction === "right" && slideNumber <= movies.length - 6) {
+          setSlideNumber(slideNumber + 1);
+          listRef.current.style.transform = `translateX(${-230 + distance}px)`;
+          if (slideNumber===14){
+            setCurrentPage(currentPage +1);
+          }
+    
+        }
+      };
     return (
         <>
             <NavBar></NavBar>
-            <div className="contianer-fluid m-4 p-5 row ">
-
-                <div className="col-md-3 ps-5 colors">
-                    <h3>My List</h3>
-                </div>
-            </div>
-            <div className='container-fluid ps-5'>
-                <div className='list-body px-5 mt-4'>
-                    <Row xs={5} md={5} className="main-design g-2  pt-4">
-                        {favorite.map((movie) => (
-                            <Col key={movie.id} className='  pb-5'>
-                                <Card className='card-design '>
-                                    <Card.Img className='card-img ' variant="top" src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}></Card.Img>
-
-                                </Card>
-                            </Col>
-                        ))}
-                    </Row>
-                </div>
-            </div>
-
-
+            <div className="list mt-5" style={{paddingTop:"160px" }}>
+      <span className="listTitle">My List</span>
+      <div className="WrapperTest">
+      <div className="wrapperList">
+        <ArrowBackIos
+          className="sliderArrow left"
+          onClick={() => handleClick("left")}
+          style={{ display: !isMoved && "none" }}
+        />
+        <div className="containerItemlist" ref={listRef}>
+          {favorite.map((movie, index) => (
+           
+            <ListItems key={index} index={index} movie={movie} />
+          ))}
+        </div>
+        <ArrowForwardIos
+          className="sliderArrow right"
+          onClick={() => handleClick("right")}
+        />
+      </div>
+      </div>
+    </div>
             <Footer></Footer>
         </>
     );

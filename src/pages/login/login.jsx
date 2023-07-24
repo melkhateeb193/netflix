@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { auth } from "../../AxiosConfig/fireBase";
 import {  signInWithEmailAndPassword   } from 'firebase/auth';
-import { useDispatch, useSelector } from "react-redux";  
+import { useDispatch } from "react-redux";  
 import ChangeRouting from "../../store/Action/auth";
 
 export default function Login() { 
@@ -30,7 +30,7 @@ export default function Login() {
         const user1 = userCredential.user;
         dispatch(ChangeRouting(true));
         navigate("/userprofile")
-        console.log(route);
+        // console.log(route);
     })
     .catch((error) => {
         const errorCode = error.code;
