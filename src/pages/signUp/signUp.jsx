@@ -1,13 +1,9 @@
- 
 import React, { useState } from "react";
 import "./signUp.css";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../AxiosConfig/fireBase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useDispatch } from "react-redux"; 
-import ChangeRouting from "../../store/Action/auth";
-export default function SignUp() {
-  const dispatch =useDispatch();
+import { createUserWithEmailAndPassword } from "firebase/auth"; 
+export default function SignUp() { 
   const [user, setUser] = useState([
     {
         name:"",
@@ -25,13 +21,11 @@ export default function SignUp() {
     },
   ]);
   const navigate = useNavigate();
+ 
   const handleSubmit = async(evt) => {
     evt.preventDefault();
-    await createUserWithEmailAndPassword(auth,user.email,user.password)
-        .then((userCredential) => {
-         dispatch(ChangeRouting(true))
-            const user = userCredential.user;
-            console.log(user);
+   const userCredential= await createUserWithEmailAndPassword(auth,user.email,user.password)
+        .then((userCredential) => { 
             navigate("/home");
         })
         .catch((error) => {
@@ -41,10 +35,9 @@ export default function SignUp() {
             // ..
         });
 
-    navigate('/Home');
   };
   const LogInNav =()=>{
-// navigate('/login');
+navigate('/login');
   }
   const handleChange = (ev) => {
     if (ev.target.name === "email") {

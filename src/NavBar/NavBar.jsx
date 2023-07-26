@@ -10,20 +10,17 @@ import {  signOut } from "firebase/auth";
 // import { Link } from "@mui/material";
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from "../AxiosConfig/fireBase";
-import { useDispatch } from "react-redux";
-import ChangeRouting from "../store/Action/auth";
+import { useDispatch } from "react-redux"; 
 
 function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const inputRef = useRef(null);
-  const navigate = useNavigate();
-  const dispatch =useDispatch();
+  const navigate = useNavigate(); 
  
   const handleLogout = () => {               
-      signOut(auth).then(() => { 
-        dispatch(ChangeRouting(false));
+      signOut(auth).then(() => {  
           navigate("/");
           console.log("Signed out successfully")
       }).catch((error) => { 

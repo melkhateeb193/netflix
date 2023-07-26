@@ -1,6 +1,4 @@
-import { useRef, useState, useEffect } from "react";
-  
-import axiosInstanceNetflix from "../../AxiosConfig/instanceAxios";
+   
 import NavBar from "../../NavBar/NavBar";
 import Browse from "../browseByLanguages/browse";
 import Footer from "../../footer/footer";
@@ -9,23 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import List from "../../list/list";
 export default function BrowsePage() {
-  const [movies, setMovies] = useState([]);
-  const [currentPage, setCurrentPage] = useState(); 
-  useEffect(() => {
-    axiosInstanceNetflix.get("/discover/movie",
-      {
-        params: {
-          page: currentPage,
-        },
-      }).then((res) => {
-        // console.log(res.data.results);
-        setMovies(res.data.results);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-
-  }, [currentPage]);
+ 
 
   return (
     <>

@@ -9,6 +9,7 @@ export default function List() {
   const [isMoved, setIsMoved] = useState(false);
   const [slideNumber, setSlideNumber] = useState(0);
   const [movies, setMovies] = useState([]);
+  const [moviesGenre, setMoviesGenres] = useState([[]]);
   const [currentPage, setCurrentPage] = useState();
   const listRef = useRef(); 
  
@@ -21,7 +22,9 @@ export default function List() {
       data:doc.data(),
       id:doc.id
      }))
-     setMovies(result);
+     setMovies(result); 
+     setMoviesGenres(result.map(m=>m.data.Genres));
+    
     //  setLoading(false);
     }).catch(err=>{console.log(err);});
   }
@@ -29,13 +32,7 @@ export default function List() {
     getData();
 
   },[]);
-  
-  // movies.map(m=>{
-  //   console.log(m.id); 
-
-  // })
- 
-
+   
   const handleClick = (direction) => {
     setIsMoved(true);
     let distance = listRef.current.getBoundingClientRect().x - 50;
@@ -60,8 +57,8 @@ export default function List() {
       }
 
     }
-  };
-
+  }; 
+  
   return (
   
     <div className="list ">
@@ -76,7 +73,7 @@ export default function List() {
         <div className="containerItemlist" ref={listRef}>
           {movies.map((movie) => (
            
-            <ListItems key={ movie.id} index={movie.id} movie={movie.data} />
+            <ListItems key={ movie.id} index={movie.id} movie={movie.data} generss ={moviesGenre} />
           ))}
         </div>
         <ArrowForwardIos

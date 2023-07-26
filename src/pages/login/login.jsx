@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { auth } from "../../AxiosConfig/fireBase";
 import {  signInWithEmailAndPassword   } from 'firebase/auth';
-import { useDispatch } from "react-redux";  
-import ChangeRouting from "../../store/Action/auth";
+import { useDispatch } from "react-redux";   
 
 export default function Login() { 
   const navigate = useNavigate();
@@ -23,12 +22,10 @@ export default function Login() {
       passError: "",
     },
   ]);
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth,user.email, user.password)
-    .then((userCredential) => { 
-        const user1 = userCredential.user;
-        dispatch(ChangeRouting(true));
+   const userCredential =await signInWithEmailAndPassword(auth,user.email, user.password)
+    .then((userCredential) => {   
         navigate("/userprofile")
         // console.log(route);
     })

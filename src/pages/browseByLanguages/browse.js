@@ -17,7 +17,7 @@ export default function Browse() {
                             <p className=" pt-2 colors">Select Your Pereferences</p>
                         </div>
                         <div className="col-md-4 colors m-0 p-0 pt-2">
-                            <Dropdown    >
+                            <Dropdown>
                                 <Dropdown.Toggle className="btnEdit" as={"button"}id="dropdown-button-dark-example1">
                                 Original Language
                                 </Dropdown.Toggle>

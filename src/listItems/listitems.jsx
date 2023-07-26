@@ -9,10 +9,10 @@ import "./listitems.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { addToList } from "../store/Action/AddToList";  
 
-function ListItems({ index, movie }) {
+function ListItems({ index, movie ,generss }) {
   const [isHovered, setIsHovered] = useState(false); 
   const favorites = useSelector((state) => state.moviesList);
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();  
   
   const handleAddToList = (movie) => {
     // console.log("Add to list:", movie.id);
@@ -27,9 +27,7 @@ function ListItems({ index, movie }) {
       dispatch(addToList(movie));
       console.log("Movie added to favorites list");
     }
-  };
-   
-  
+  };  
   return (
     <div className="test">
       <div
@@ -58,14 +56,11 @@ function ListItems({ index, movie }) {
               <span>{movie.Name ? movie.Name :movie.name}</span>
             </div>
            
-            <div className="desc"><p>{ movie.description ?movie.description :movie.Description}</p></div>
+            <div className="desc"><p>{ movie.description ? movie.description :movie.Description}</p></div>
           
          
-            <div className="genre">
-            
-                  
-              {/*        { movie.Genre? movie.Genres.map((genre) => genre).join(", ") :movie.Genre.map((genre) => genre).join(", ")}  */}
-
+            <div className="genre"> 
+                     {generss.map((genre) => genre).join(", ")}  
             </div>
           
         </div>

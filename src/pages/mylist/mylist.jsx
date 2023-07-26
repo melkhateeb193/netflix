@@ -53,9 +53,9 @@ function MyList() {
           style={{ display: !isMoved && "none" }}
         />
         <div className="containerItemlist" ref={listRef}>
-          {favorite.map((movie, index) => (
-           
-            <ListItems key={index} index={index} movie={movie} />
+          {favorite.map((movie) => (
+           <ListItems key={ movie.id} index={movie.id} movie={movie} generss ={movie.Genres} />
+            // <ListItems key={index} index={index} movie={movie}  />
           ))}
         </div>
         <ArrowForwardIos
