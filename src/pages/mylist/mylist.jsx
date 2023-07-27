@@ -54,8 +54,7 @@ function MyList() {
         />
         <div className="containerItemlist" ref={listRef}>
           {favorite.map((movie) => (
-           <ListItems key={ movie.id} index={movie.id} movie={movie} generss ={movie.Genres} />
-            // <ListItems key={index} index={index} movie={movie}  />
+           <ListItems key={ movie.id} index={movie.id} movie={movie} generss ={movie.Genres} /> 
           ))}
         </div>
         <ArrowForwardIos
