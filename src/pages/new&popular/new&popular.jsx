@@ -7,12 +7,12 @@ function NewPopular() {
     return (
         <div className="NewPopular" >
         <NavBar/>
-        <List/>
-        <List/>
-        <List/>
-        <List/>
-        <List/>
-        <List/>
+        <List name ="Continue Watching For Group4"/>
+          <List name="Korean"/>
+          <List name="Popular on NetFlix"/> 
+          <List name="Egyptien TV"/> 
+          <List name="For You"/> 
+          <List name="Recommended Movies"/> 
         <Footer/>
     </div> 
     )

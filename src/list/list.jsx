@@ -5,7 +5,7 @@ import ListItems from "./../listItems/listitems";
 import { db } from "../AxiosConfig/fireBase";
 import { collection ,getDocs} from 'firebase/firestore';
   
-export default function List() {
+export default function List(props) {
   const [isMoved, setIsMoved] = useState(false);
   const [slideNumber, setSlideNumber] = useState(0);
   const [movies, setMovies] = useState([]);
@@ -16,16 +16,14 @@ export default function List() {
 
   function getData(){
     const resultsCollection=collection(db,"NetflixClone");
-    getDocs(resultsCollection).then(res=>{
-      // setLoading(true);
+    getDocs(resultsCollection).then(res=>{ 
      const result =res.docs.map(doc=>({
       data:doc.data(),
       id:doc.id
      }))
      setMovies(result); 
      setMoviesGenres(result.map(m=>m.data.Genres));
-    
-    //  setLoading(false);
+     
     }).catch(err=>{console.log(err);});
   }
   useEffect(() =>{
@@ -62,7 +60,7 @@ export default function List() {
   return (
   
     <div className="list ">
-      <span className="listTitle">Continue to watch</span>
+      <span className="listTitle">{props.name}</span>
       <div className="WrapperTest">
       <div className="wrapperList">
         <ArrowBackIos
