@@ -5,6 +5,13 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../AxiosConfig/fireBase";
 import { useEffect, useState } from "react"; 
 import List from "../../list/list";
+
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import ListItems from "../../listItems/listitems";
 export default function BrowsePage() {
   const [movies, setMovies] = useState([]);
   const [moviesGenre, setMoviesGenres] = useState([[]]);
@@ -31,12 +38,37 @@ export default function BrowsePage() {
         <div className="Home" > 
         <NavBar></NavBar>  
          <Browse></Browse> 
-         <List name ="Continue Watching For Group4"/>
+
+         <Container fluid>
+
+<Row>
+
+  {movies.map((movie) => (
+
+    <Col key={movie.data.id} className="mb-4">
+
+      <Card className="h-100" style={{ width: "16rem" }}>
+      <ListItems key={ movie.id} index={movie.id} movie={movie.data} generss ={moviesGenre} />
+      
+
+      </Card>
+
+    </Col>
+
+  ))}
+
+</Row>
+
+ 
+
+</Container>
+
+         {/* <List name ="Continue Watching For Group4"/>
           <List name="Korean"/>
           <List name="Popular on NetFlix"/> 
           <List name="Egyptien TV"/> 
           <List name="For You"/> 
-          <List name="Recommended Movies"/> 
+          <List name="Recommended Movies"/>  */}
 
        
       </div>

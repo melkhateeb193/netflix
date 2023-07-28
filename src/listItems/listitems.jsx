@@ -15,7 +15,7 @@ function ListItems({ index, movie ,generss }) {
   const dispatch = useDispatch();  
   
   const handleAddToList = (movie) => {
-    // console.log("Add to list:", movie.id);
+   console.log("Add to list:", movie);
 
     const isMovieInFavorites = favorites.some(
       (favMovie) => favMovie.id === index

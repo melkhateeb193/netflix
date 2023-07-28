@@ -5,14 +5,14 @@ import ListItems from "./../listItems/listitems";
 import { db } from "../AxiosConfig/fireBase";
 import { collection ,getDocs} from 'firebase/firestore';
   
-export default function List(props) {
+export default function List(props ,{ searchTerm }) {
   const [isMoved, setIsMoved] = useState(false);
   const [slideNumber, setSlideNumber] = useState(0);
   const [movies, setMovies] = useState([]);
   const [moviesGenre, setMoviesGenres] = useState([[]]);
   const [currentPage, setCurrentPage] = useState();
   const listRef = useRef(); 
- 
+const [search,setSearch]=useState([]); 
 
   function getData(){
     const resultsCollection=collection(db,"NetflixClone");
@@ -21,7 +21,9 @@ export default function List(props) {
       data:doc.data(),
       id:doc.id
      }))
-     setMovies(result); 
+     
+     setMovies(searchTerm ? searchTerm :result); 
+     setSearch(result.map((m)=>searchTerm==m.data.name?m.data.name:m.data.Name))
      setMoviesGenres(result.map(m=>m.data.Genres));
      
     }).catch(err=>{console.log(err);});
@@ -29,8 +31,9 @@ export default function List(props) {
   useEffect(() =>{
     getData();
 
-  },[]);
+  },[ searchTerm ]);
    
+  console.log(search);
   const handleClick = (direction) => {
     setIsMoved(true);
     let distance = listRef.current.getBoundingClientRect().x - 50;
