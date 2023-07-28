@@ -5,12 +5,6 @@ import {
   ThumbDownAltOutlined,
   ThumbUpAltOutlined,
 } from "@mui/icons-material";
-import {
-  Add,
-  PlayArrow,
-  ThumbDownAltOutlined,
-  ThumbUpAltOutlined,
-} from "@mui/icons-material";
 import "./listitems.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { addToList } from "../store/Action/AddToList";  
