@@ -23,12 +23,8 @@ function ListItems({ index, movie ,generss }) {
   const handleAddToList = (movie) => {
    console.log("Add to list:", movie);
 
-
     const isMovieInFavorites = favorites.some(
       (favMovie) => favMovie.id === index
-
-    const isMovieInFavorites = favorites.moviesList.some(
-      (favMovie) => favMovie.id === movie.iddee429a665337cc748450f7c22d74d6189554e05
     );
 
     if (isMovieInFavorites) { 

@@ -62,16 +62,16 @@ export default function Browse() {
                         </div>
                         <div className="col-md-8 ps-3 colors  pt-2">
                         <Dropdown className="btnEdit2">
-                                <Dropdown.Toggle className="btnEdit" as={"button"}id="dropdown-example1">
+                                <Dropdown.Toggle className="btnEdit" as={"button"}id="dropdown-button-dark-example1">
                                 Suggestions
                                 </Dropdown.Toggle>
-                                <Dropdown.Menu as={"button"} variant="dark" >
-                                <Dropdown.Item className="bg-dark" eventKey="1">
+                                <Dropdown.Menu as={"button"} className="btnEdit2" variant="dark" >
+                                <Dropdown.Item eventKey="1">
                                 Suggestions For you
                                     </Dropdown.Item>
-                                    <Dropdown.Item className="bg-dark" eventKey="2">Year Released</Dropdown.Item>
-                                    <Dropdown.Item className="bg-dark" eventKey="3">A-Z</Dropdown.Item> 
-                                    <Dropdown.Item className="bg-dark" eventKey="4">Z-A</Dropdown.Item> 
+                                    <Dropdown.Item eventKey="2">Year Released</Dropdown.Item>
+                                    <Dropdown.Item eventKey="3">A-Z</Dropdown.Item> 
+                                    <Dropdown.Item eventKey="4">Z-A</Dropdown.Item> 
                                 </Dropdown.Menu>
                             </Dropdown>
                            
