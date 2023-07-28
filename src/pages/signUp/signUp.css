@@ -2,6 +2,7 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${../../../../../public/images/backgroundimahe.jpg); 
     background-position: center center;
     background-size: cover;
+    padding-top: 70px;
 
 }
 .default-ltr-cache-mv4tc2 {

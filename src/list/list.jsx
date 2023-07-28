@@ -1,48 +1,39 @@
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState , useEffect } from "react";
 import "./list.scss";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
-import ListItems from "./../listItems/listitems";
-import axiosInstanceNetflix from "../AxiosConfig/instanceAxios";
-
-export default function List() {
+import ListItems from "./../listItems/listitems"; 
+import { db } from "../AxiosConfig/fireBase";
+import { collection ,getDocs} from 'firebase/firestore';
+  
+export default function List(props ,{ searchTerm }) {
   const [isMoved, setIsMoved] = useState(false);
   const [slideNumber, setSlideNumber] = useState(0);
   const [movies, setMovies] = useState([]);
+  const [moviesGenre, setMoviesGenres] = useState([[]]);
   const [currentPage, setCurrentPage] = useState();
-  const listRef = useRef();
+  const listRef = useRef(); 
+const [search,setSearch]=useState([]); 
 
-  useEffect(() => {
-    axiosInstanceNetflix.get("/discover/movie",
-    {
-      params: { 
-        page: currentPage,
-      },
-    }).then((res) => { 
-      // console.log(res.data);
-      setMovies(res.data.results);
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-    // const fetchMovies = async () => {
-    //   try {
-    //     const response = await fetch(
-    //       "https://api.themoviedb.org/3/discover/movie?api_key=7f853d464ac954ff376525370120f3bd&sort_by=popularity.desc&language=en-US&page=4"
-    //     );
-    //     if (response.ok) {
-    //       const data = await response.json();
-    //       setMovies(data.results);
-    //     } else {
-    //       console.log("Error:", response.status);
-    //     }
-    //   } catch (error) {
-    //     console.log("Error:", error);
-    //   }
-    // };
+  function getData(){
+    const resultsCollection=collection(db,"NetflixClone");
+    getDocs(resultsCollection).then(res=>{ 
+     const result =res.docs.map(doc=>({
+      data:doc.data(),
+      id:doc.id
+     }))
+     
+     setMovies(searchTerm ? searchTerm :result); 
+     setSearch(result.map((m)=>searchTerm==m.data.name?m.data.name:m.data.Name))
+     setMoviesGenres(result.map(m=>m.data.Genres));
+     
+    }).catch(err=>{console.log(err);});
+  }
+  useEffect(() =>{
+    getData();
 
-    // fetchMovies();
-  }, [currentPage]);
-
+  },[ searchTerm ]);
+   
+  console.log(search);
   const handleClick = (direction) => {
     setIsMoved(true);
     let distance = listRef.current.getBoundingClientRect().x - 50;
@@ -67,12 +58,12 @@ export default function List() {
       }
 
     }
-  };
-
+  }; 
+  
   return (
   
     <div className="list ">
-      <span className="listTitle">Continue to watch</span>
+      <span className="listTitle">{props.name}</span>
       <div className="WrapperTest">
       <div className="wrapperList">
         <ArrowBackIos
@@ -81,9 +72,9 @@ export default function List() {
           style={{ display: !isMoved && "none" }}
         />
         <div className="containerItemlist" ref={listRef}>
-          {movies.map((movie, index) => (
+          {movies.map((movie) => (
            
-            <ListItems key={index} index={index} movie={movie} />
+            <ListItems key={ movie.id} index={movie.id} movie={movie.data} generss ={moviesGenre} />
           ))}
         </div>
         <ArrowForwardIos

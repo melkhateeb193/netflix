@@ -1,17 +1,13 @@
-// favoritesReducer.js
-const initialState = {
-  moviesList: [], // Initialize moviesList as an empty array
-};
 
-const favoritesReducer = (state = initialState, action) => {
+
+const INTIAL_STATE = [];
+
+const favoritesReducer = (state = INTIAL_STATE, action) => {
   switch (action.type) {
+    case "REMOVE_FROM_LIST":
+      return state.filter((movie) => movie.id !== action.payload);
     case "ADD_TO_LIST":
-      return {
-        ...state,
-        moviesList: [...state.moviesList, action.payload], // Add the new movie to the moviesList
-      };
-    // Handle other actions
-
+      return [...state, action.payload];
     default:
       return state;
   }

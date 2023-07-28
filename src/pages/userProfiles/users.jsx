@@ -8,7 +8,7 @@ function Userprofile() {
         <div className="container row p-5 w-100 ">
           <div className="col-md text-center ">
             <div className="box">
-              <a href="/Home">
+              <a href="/home">
                 {" "}
                 <img className='usersImg' src="images/smile1.png" alt="" />
               </a>
@@ -19,18 +19,18 @@ function Userprofile() {
           </div>
           <div className="col-md text-center">
             <div className="box">
-              <a href="/Home">
+              <a href="/home">
                 {" "}
                 <img className='usersImg' src="images/smile2.png" alt="" />{" "}
               </a>
             </div>
             <p>
-              <a href="/Home">Abdelrahman alaa</a>
+              <a href="/home">Abdelrahman alaa</a>
             </p>
           </div>
           <div className="col-md text-center">
             <div className="box">
-              <a href="/Home">
+              <a href="/home">
                 {" "}
                 <img className='usersImg' src="images/smile3.png" alt="" />{" "}
               </a>
@@ -41,13 +41,13 @@ function Userprofile() {
           </div>
           <div className="col-md text-center">
             <div className="box">
-              <a href="/Home">
+              <a href="/home">
                 {" "}
                 <img className='usersImg' src="images/smile4.png" alt="" />{" "}
               </a>
             </div>
             <p>
-              <a href="/Home">Mostafa Ali</a>
+              <a href="/home">Mostafa Ali</a>
             </p>
           </div>
           <div className="col-md text-center">

@@ -5,15 +5,40 @@ import Navbar from "react-bootstrap/Navbar";
 import NavLink from "react-bootstrap/NavLink";
 import Form from "react-bootstrap/Form";
 import "./NavBar.scss";
-// import { Link } from "@mui/material";
-import { Link } from 'react-router-dom';
+import {  signOut } from "firebase/auth";
 
-function NavBar() {
+// import { Link } from "@mui/material";
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from "../AxiosConfig/fireBase";
+import { useDispatch } from "react-redux"; 
+
+function NavBar({ onSearch }) {
+  const [searchQuery, setSearchQuery] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const inputRef = useRef(null);
+  const navigate = useNavigate(); 
+ 
+  const handleSearchFromNav = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim() !== '') {
+      onSearch(searchQuery);
+      setSearchQuery('');
+    }
+  }
 
+  const handleInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+ 
+
+  const handleLogout = () => {               
+      signOut(auth).then(() => {  
+          navigate("/");
+          console.log("Signed out successfully")
+      }).catch((error) => { 
+      });}
   useEffect(() => {
     const handleScroll = () => {
       if (window.pageYOffset > 0) {
@@ -55,7 +80,7 @@ function NavBar() {
     <>
       <div className={isScrolled ? "sticky scrolled" : "sticky"}>
         <Navbar
-          className="navbar justify-content-around "
+          className="navbar justify-content-around"
           expand="lg"
           id="navbar"
         >
@@ -103,7 +128,7 @@ function NavBar() {
 
               <Nav className="d-flex hide">
                 {/* search part */}
-                <Form className={isOpened ? "search search__open" : "search"}>
+                <Form className={isOpened ? "search search__open" : "search"} onSubmit={handleSearch}>
                   <img
                     className="search__icon"
                     src="./icons/search.svg"
@@ -274,7 +299,7 @@ function NavBar() {
                     </ul>
                     <ul className="profile__menu--listEnd">
                       <li className="profile__menu--listItem">
-                        <a className="profile__menu--btn" href="/mainpage">
+                        <a className="profile__menu--btn" href="/" as={Link} onClick={handleLogout}>
                           Sign out of Netflix
                         </a>
                       </li>

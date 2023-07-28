@@ -27,8 +27,8 @@ export default function Movies() {
   return (
     <>
     <NavBar></NavBar>
-      <Browse></Browse>
-      <div className='container-fluid'>
+      {/* <Browse></Browse> */}
+      <div className='container-fluid pt-5'>
                 <div className='list-body px-5 mt-4'> 
                     <Row xs={6} md={6} className="main-design g-2  pt-4">
                         {movies.map((movie) => (
