@@ -1,19 +1,10 @@
-   
 import NavBar from "../../NavBar/NavBar";
 import Browse from "../browseByLanguages/browse";
-import Footer from "../../footer/footer"; 
-import List from "../../list/list";
-
-import { Link } from "react-router-dom";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import Footer from "../../footer/footer";   
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../AxiosConfig/fireBase";
-import { useEffect, useState } from "react";
-import ListItems from "../../listItems/listitems";
+import { useEffect, useState } from "react"; 
+import List from "../../list/list";
 export default function BrowsePage() {
   const [movies, setMovies] = useState([]);
   const [moviesGenre, setMoviesGenres] = useState([[]]);
@@ -37,30 +28,18 @@ export default function BrowsePage() {
   // console.log(movies);
   return (
     <>
-
+        <div className="Home" > 
         <NavBar></NavBar>  
          <Browse></Browse> 
+         <List name ="Continue Watching For Group4"/>
+          <List name="Korean"/>
+          <List name="Popular on NetFlix"/> 
+          <List name="Egyptien TV"/> 
+          <List name="For You"/> 
+          <List name="Recommended Movies"/> 
 
-      <div className='container-fluid ps-5'>
-      <div className="containerItemlist"> 
-    <Row xs={5} md={5} className="main-design   pt-4">
-      {movies.map((movie) => ( 
-        //  <Col key={movie.data.id} className="mb-4">
-           <Card className="h-100" style={{ width: "14rem" }}>
-           <ListItems key={ movie.id} index={movie.id} movie={movie.data} generss ={moviesGenre} />
-           </Card>
-            // </Col>
- 
-      ))}
-    </Row>
-  </div>
-</div>
-
-      {/* <List></List>
-      <List></List>
-      <List></List>
-      <List></List> */}
-      
+       
+      </div>
       <Footer></Footer>
     </>
 

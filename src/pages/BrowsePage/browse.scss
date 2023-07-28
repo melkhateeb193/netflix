@@ -101,3 +101,7 @@
     transform: translateX(0px);
     transition: all 1s ease;
   }
+  .Home {
+    background-color: var(--main-color);
+    overflow: hidden !important;
+}
