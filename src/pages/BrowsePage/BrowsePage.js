@@ -35,7 +35,7 @@ export default function BrowsePage() {
   // console.log(movies);
   return (
     <>
-        <div className="Home" > 
+        <div className="Home " > 
         <NavBar></NavBar>  
          <Browse></Browse> 
 
@@ -47,10 +47,9 @@ export default function BrowsePage() {
 
     <Col key={movie.data.id} className="mb-4">
 
-      <Card className="h-100" style={{ width: "16rem" }}>
+      <Card className="h-100 " style={{ width: "14rem" }}>
       <ListItems key={ movie.id} index={movie.id} movie={movie.data} generss ={moviesGenre} />
       
-
       </Card>
 
     </Col>
