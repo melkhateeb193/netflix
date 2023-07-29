@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NotFound from './pages/notfound/notfound';
 import Userprofile from './pages/userProfiles/users';
 import Home from './pages/Home/Home';
@@ -16,16 +16,17 @@ import { auth } from './AxiosConfig/fireBase';
 
 function App() { 
   const [user, setUser] = useState();
+
   useEffect(() => {
-      onAuthStateChanged(auth, (user) => {
-          setUser(user);
-      });
+    onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
   }, []);
 
   return (
     <React.StrictMode> 
-      <BrowserRouter> 
-        <Routes> 
+      <Router>
+        <Routes> {/* Use Routes instead of Switch */}
           {!user ? (
             <>
               <Route path="/" element={<Mainpagebfl />} />
@@ -46,8 +47,8 @@ function App() {
               <Route path="*" element={<NotFound />} />
             </>
           )}
-        </Routes> 
-      </BrowserRouter>
+        </Routes>
+      </Router>
     </React.StrictMode>
   );
 }
