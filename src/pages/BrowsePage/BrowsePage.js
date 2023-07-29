@@ -4,12 +4,10 @@ import Footer from "../../footer/footer";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../AxiosConfig/fireBase";
 import { useEffect, useState } from "react"; 
-import List from "../../list/list";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListItems from "../../listItems/listitems";
 export default function BrowsePage() {
