@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 
 export default function Login() { 
   const navigate = useNavigate();
+  //eslint-disable-next-line
   const dispatch =useDispatch(); 
   const [user, setUser] = useState([
     {
@@ -24,6 +25,7 @@ export default function Login() {
   ]);
   const handleSubmit = async(e) => {
     e.preventDefault();
+      //eslint-disable-next-line
    const userCredential =await signInWithEmailAndPassword(auth,user.email, user.password)
     .then((userCredential) => {   
         navigate("/userprofile")
@@ -70,6 +72,7 @@ export default function Login() {
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   };
+    //eslint-disable-next-line
   const validatePassword = (pass) => {
     const re = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
     return re.test(String(pass).toLowerCase());
