@@ -10,27 +10,27 @@ import {  signOut } from "firebase/auth";
 // import { Link } from "@mui/material";
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from "../AxiosConfig/fireBase";
-import { useDispatch } from "react-redux"; 
+// import { useDispatch } from "react-redux"; 
 
 function NavBar({ onSearch }) {
-  const [searchQuery, setSearchQuery] = useState('');
+  // const [searchQuery, setSearchQuery] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const inputRef = useRef(null);
   const navigate = useNavigate(); 
  
-  const handleSearchFromNav = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim() !== '') {
-      onSearch(searchQuery);
-      setSearchQuery('');
-    }
-  }
+  // const handleSearchFromNav = (e) => {
+  //   e.preventDefault();
+  //   if (searchQuery.trim() !== '') {
+  //     onSearch(searchQuery);
+  //     setSearchQuery('');
+  //   }
+  // }
 
-  const handleInputChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
+  // const handleInputChange = (e) => {
+  //   setSearchQuery(e.target.value);
+  // };
  
 
   const handleLogout = () => {               

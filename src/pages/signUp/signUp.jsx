@@ -24,6 +24,7 @@ export default function SignUp() {
  
   const handleSubmit = async(evt) => {
     evt.preventDefault();
+        //eslint-disable-next-line
    const userCredential= await createUserWithEmailAndPassword(auth,user.email,user.password)
         .then((userCredential) => { 
             navigate("/home");
@@ -99,10 +100,11 @@ navigate('/login');
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   };
-  const validatePassword = (pass) => {
-    const re = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-    return re.test(String(pass).toLowerCase());
-  };
+ 
+  // const validatePassword = (pass) => {
+  //   const re = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+  //   return re.test(String(pass).toLowerCase());
+  // };
 
   return (
     <div className="BackGround">

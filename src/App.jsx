@@ -26,7 +26,7 @@ function App() {
   return (
     <React.StrictMode> 
       <Router>
-        <Routes> {/* Use Routes instead of Switch */}
+        <Routes> 
           {!user ? (
             <>
               <Route path="/" element={<Mainpagebfl />} />
